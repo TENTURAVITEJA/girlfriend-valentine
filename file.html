@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Valentine Invitation</title>
+    <style>
+        body { text-align: center; font-family: 'Arial', sans-serif; background-color: #ffe6e6; }
+        .container { margin-top: 15%; }
+        button { padding: 15px 30px; font-size: 20px; margin: 10px; cursor: pointer; }
+        #yesBtn { background-color: #4CAF50; color: white; border: none; }
+        #noBtn { background-color: #f44336; color: white; border: none; position: absolute; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine? ??</h1>
+        <button id="yesBtn" onclick="location.href='YES_PAGE_LINK'">Yes</button>
+        <button id="noBtn" onmouseover="moveButton()">No</button>
+    </div>
+    <script>
+        function moveButton() {
+            var x = Math.random() * (window.innerWidth - 100);
+            var y = Math.random() * (window.innerHeight - 100);
+            document.getElementById('noBtn').style.left = x + 'px';
+            document.getElementById('noBtn').style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
