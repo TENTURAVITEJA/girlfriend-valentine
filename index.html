@@ -1,28 +1,172 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Valentine Invitation</title>
-    <style>
-        body { text-align: center; font-family: 'Arial', sans-serif; background-color: #ffe6e6; }
-        .container { margin-top: 15%; }
-        button { padding: 15px 30px; font-size: 20px; margin: 10px; cursor: pointer; }
-        #yesBtn { background-color: #4CAF50; color: white; border: none; }
-        #noBtn { background-color: #f44336; color: white; border: none; position: absolute; }
-    </style>
+  <title>Valentine Invitation 💖</title>
+
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffe6e6;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      margin-top: 15%;
+    }
+
+    h1 {
+      color: #cc0066;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+    }
+
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      width: 330px;
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal h2 {
+      color: #e60073;
+    }
+
+    .modal a {
+      color: #e60073;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .close {
+      margin-top: 20px;
+      background-color: #e60073;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+    }
+
+    /* Hearts */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      color: #ff4d88;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Will you be my Valentine? ??</h1>
-        <button id="yesBtn" onclick="location.href='YES_PAGE_LINK'">Yes</button>
-        <button id="noBtn" onmouseover="moveButton()">No</button>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <h1>Will you be my Valentine? 🥺❤️</h1>
+    <button id="yesBtn" onclick="acceptLove()">Yes</button>
+    <button id="noBtn" onmouseover="moveButton()">No</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="valentineModal">
+    <div class="modal-content">
+      <h2>Yay! My Love 💖</h2>
+      <p><strong>Date:</strong> 14 February 2026</p>
+      <p><strong>Location:</strong>
+        <a href="https://maps.google.com/?q=your+cafe+location" target="_blank">
+          Our Favorite Café ☕
+        </a>
+      </p>
+      <p>
+        Can’t wait to celebrate this beautiful day with you 💕<br>
+        You mean the world to me 😘
+      </p>
+      <button class="close" onclick="openWhatsApp()">Message Me 💬</button>
     </div>
-    <script>
-        function moveButton() {
-            var x = Math.random() * (window.innerWidth - 100);
-            var y = Math.random() * (window.innerHeight - 100);
-            document.getElementById('noBtn').style.left = x + 'px';
-            document.getElementById('noBtn').style.top = y + 'px';
-        }
-    </script>
+  </div>
+
+  <script>
+    function moveButton() {
+      var x = Math.random() * (window.innerWidth - 100);
+      var y = Math.random() * (window.innerHeight - 100);
+      document.getElementById('noBtn').style.left = x + 'px';
+      document.getElementById('noBtn').style.top = y + 'px';
+    }
+
+    function acceptLove() {
+      document.getElementById('valentineModal').style.display = 'flex';
+      document.getElementById('bgMusic').play();
+      startHearts();
+    }
+
+    function openWhatsApp() {
+      window.open("https://wa.me/91XXXXXXXXXX?text=I%20said%20YES%20💖", "_blank");
+    }
+
+    function startHearts() {
+      for (let i = 0; i < 30; i++) {
+        let heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+    }
+  </script>
+
 </body>
 </html>
